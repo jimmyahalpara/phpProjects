@@ -60,7 +60,7 @@
         </div>
         <form method="POST" enctype="multipart/form-data">
             <input type="file" name="fileToUpload" id="fileToUpload">
-            <input type="submit" value="Upload Image" name="submit">
+            <input type="submit" value="Upload File" name="submit">
         </form>
         <div class="preContainer">
             <pre>
