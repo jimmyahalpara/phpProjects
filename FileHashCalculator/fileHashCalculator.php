@@ -1,7 +1,5 @@
 <?php 
-
-    
-    $message = "";
+    session_start();
     $fileUpload = 0;
     if (isset($_FILES['fileToUpload'])){
         $fileUpload = 1;
@@ -20,7 +18,10 @@
 
         foreach (hash_algos() as $key => $value) {
             $message = $message . "\n $value - " . hash($value, $_FILES['fileToUpload']['tmp_name']);
+            $_SESSION["message"] = $message;
         }
+        header("Location: fileHashCalculator.php");
+        return;
 
     }
     ?>
@@ -64,7 +65,13 @@
         </form>
         <div class="preContainer">
             <pre>
-                <?= $message ?>
+                <?php
+                    if (isset($_SESSION["message"])){
+                        echo $_SESSION["message"];
+                        unset($_SESSION["message"]);
+                    }
+                    
+                ?>
             </pre>
         </div>
 
@@ -72,3 +79,4 @@
 </body>
 
 </html>
+
